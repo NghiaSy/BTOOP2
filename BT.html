@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<canvas id="Canvas" width="300px" height="500px" style="border:1px solid #d3d3d3;"></canvas>
+<script>
+
+  class Square{
+    x;
+    y;
+    sideLength;
+    color;
+    constructor(length, x, y, color) {
+      this.sideLength = length
+      this.x = x;
+      this.y = y;
+      this.color = color
+    }
+
+    getPerimeter(){
+      return this.sideLength * 4
+    }
+    setSide(length){
+      this.sideLength=length
+    }
+    getArea(){
+      return this.sideLength**2
+    }
+    draw(ctx){
+
+      ctx.rect(this.x, this.y, this.sideLength, this.sideLength);
+      ctx.fillStyle= this.color
+      ctx.fill();
+    }
+
+  }
+  let ctx =document.getElementById("Canvas").getContext("2d")
+  for (let i=0;i<10;i++){
+    let x=Math.floor(Math.random()*300);
+    let y=Math.floor(Math.random()*500);
+    let sq = new Square(30, x, y, "Blue");
+    sq.draw(ctx);
+
+  }
+</script>
+</body>
+</html>
